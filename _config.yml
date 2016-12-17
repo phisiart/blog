@@ -1,6 +1,6 @@
 name: White Paper
 highlighter: true
-url: phisiart.github.io/blog
+url: phisiart.github.io/white-paper
 gems: [jekyll-paginate,  jekyll-gist]
 paginate: 8
 description:     Jekyll theme for Programmers
