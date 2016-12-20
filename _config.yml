@@ -1,5 +1,5 @@
 name: White Paper
-highlighter: true
+highlighter: rouge
 url: https://phisiart.github.io
 baseurl: /blog
 gems: [ jekyll-paginate, jekyll-gist ]
