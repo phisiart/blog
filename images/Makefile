@@ -1,13 +1,18 @@
 PDFLATEX=pdflatex
 PDF2SVG=pdf2svg
+RM=rm
 
 SRC = $(wildcard *.tex)
-PDF = $(patsubst %.tex, %.pdf, $(SRC))
-SVG = $(wildcard *.tex, %.svg, $(SRC))
+SVG = $(patsubst %.tex, %.svg, $(SRC))
 
-%.pdf: %.tex
-	$(PDFLATEX) $^ > /dev/null 2>&1
+%.svg: %.tex
+	$(PDFLATEX) $< > /dev/null 2>&1
+	$(PDF2SVG) $*.pdf $@ > /dev/null 2>&1
+	$(RM) $*.pdf $*.aux $*.log
 
-%.svg: %.pdf
-	$(PDF2SVG) $^ $@ > /dev/null 2>&1
+.PHONY: all clean
 
+all: $(SVG)
+
+clean:
+	$(RM) $(SVG)
