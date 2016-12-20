@@ -5,12 +5,9 @@ SRC = $(wildcard *.tex)
 PDF = $(patsubst %.tex, %.pdf, $(SRC))
 SVG = $(wildcard *.tex, %.svg, $(SRC))
 
-all:
-	echo $(SVG)
+%.pdf: %.tex
+	$(PDFLATEX) $^ > /dev/null 2>&1
 
-$(PDF): $(SRC)
-	$(PDFLATEX) $^
-
-$(SVG): $(PDF)
-	$(PDF2SVG) $^ $@
+%.svg: %.pdf
+	$(PDF2SVG) $^ $@ > /dev/null 2>&1
 
