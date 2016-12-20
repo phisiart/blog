@@ -3,6 +3,21 @@ layout: default
 title: A guide to your digital life
 ---
 
+<p>
+site.url:<br />
+{{ site.url }}
+</p>
+
+<p>
+site.baseurl:<br />
+{{ site.baseurl }}
+</p>
+
+<p>
+site.baseurl | prepend: site.url:<br />
+{{ site.baseurl | prepend: site.url }}
+</p>
+
 <div class="listing">
     {% for post in paginator.posts %}
     <div class="post other link">

@@ -1,12 +1,14 @@
 name: White Paper
 highlighter: true
-url: https://phisiart.github.io/blog
+url: https://phisiart.github.io
+baseurl: /blog
 gems: [ jekyll-paginate, jekyll-gist ]
 paginate: 8
 description: Zhixun Tan
 intro: Zhixun Tan
 logo: logo.png
-disqus_shortname:
+disqus_shortname: phisiart-blog
+
 # url: http://gotchacode.com
 #Comment out url when working locally to resolve base urls correctly
 #url:
@@ -14,11 +16,11 @@ disqus_shortname:
 # Owner/author information
 owner:
   name: Zhixun Tan
-  avatar: <avatar-image-link>
-  email: <your-email-address>
+  avatar: phisiart@gmail.com
+  email:
   # Social networking links used in footer. Update and remove as you like.
   twitter:
-  github:
+  github: phisiart
   stackexchange:
   # For Google Authorship https://plus.google.com/authorship
   google_plus:
