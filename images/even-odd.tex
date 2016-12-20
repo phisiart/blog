@@ -1,0 +1,23 @@
+\documentclass[crop]{standalone} %%[preview]
+\usepackage{proof}
+\usepackage{relsize}
+\begin{document}
+\relscale{1.5}
+$\displaystyle
+\infer[\texttt{even} I_0]{
+    \texttt{even}(0)
+}{}
+\qquad
+\infer[\texttt{odd} I_s]{
+    \texttt{odd}(s(N))
+}{
+    \texttt{even}(N)
+}
+\qquad
+\infer[\texttt{even} I_s]{
+    \texttt{even}(s(N))
+}{
+    \texttt{odd}(N)
+}
+$
+\end{document}

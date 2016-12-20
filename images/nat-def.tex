@@ -1,0 +1,17 @@
+\documentclass[crop]{standalone} %%[preview]
+\usepackage{proof}
+\usepackage{relsize}
+\begin{document}
+\relscale{1.5}
+$\displaystyle
+\infer[\texttt{nat} I_0]{
+ 0 : \texttt{nat}
+}{}
+\qquad
+\infer[\texttt{nat} I_s]{
+ s(N) : \texttt{nat}
+}{
+ N : \texttt{nat}
+}
+$
+\end{document}

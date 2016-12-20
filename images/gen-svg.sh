@@ -1,6 +1,11 @@
-pdflatex sample-proof.tex
-pdf2svg sample-proof.pdf sample-proof.svg
-rm sample-proof.aux
-rm sample-proof.log
-# rm sample-proof.pdf
+#!/bin/bash
+for filename in *.tex; do
+    name=${filename%.tex}
+    pdflatex ${name}.tex
+    pdf2svg ${name}.pdf ${name}.svg
+done
+
+rm *.aux
+rm *.log
+rm *.pdf
 
