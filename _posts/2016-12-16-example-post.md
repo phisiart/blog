@@ -124,7 +124,7 @@ By induction on the derivation of $$N : \texttt{nat}$$.
 
 ## Addition
 <center>
-<img src="{{ site.baseurl }}/images/add-def.svg">
+<img src="{{ site.baseurl }}/images/plus-def.svg">
 </center>
 
 ### Lemma 1: For any $$N$$, if $$N : \texttt{nat}$$, then $$\texttt{plus}(N, 0, N)$$.
@@ -153,12 +153,56 @@ By induction on the derivation of $$N : \texttt{nat}$$.
 
   By $$\texttt{plus}I_s$$, we get $$\texttt{plus}(s(N'), 0, s(N'))$$, which is just $$\texttt{plus}(N, 0, N)$$.
 
-### Lemma 2: for any $$N$$, if $$\texttt{plus}(M, N, P)$$, then $$\texttt{plus}(M, s(N), s(P))$$.
+### Lemma 2: For any $$N$$, if $$\texttt{plus}(M, N, P)$$, then $$\texttt{plus}(M, s(N), s(P))$$.
 
 **Proof of Lemma 2:**
 
 By induction on the derivation of $$\texttt{plus}(M, N, P)$$.
 
 * Case: suppose the last rule is
+  <center>
+  <img src="{{ site.baseurl }}/images/plus-I0.svg">
+  </center>
+
+  We get $$M = 0$$, and $$P = 0$$, and $$N : \texttt{nat}$$.
+
+  By $$\texttt{nat}I_s$$, we get $$s(N) : \texttt{nat}$$.
+
+  By $$\texttt{plus}I_0$$, we get $$\texttt{plus}(0, s(N), s(N))$$, which is just $$\texttt{plus}(M, s(N), s(P))$$.
 
 * Case: suppose the last rule is
+  <center>
+  <img src="{{ site.baseurl }}/images/plus-Is-2.svg">
+  </center>
+
+  We get $$M = s(M')$$, and $$P = s(P')$$, and $$\texttt{plus}(M', N, P')$$.
+
+  By induction hypothesis, we get $$\texttt{plus}(M', s(N), P')$$.
+
+  By $$\texttt{plus}I_s$$, we get $$\texttt{plus}(s(M'), s(N), s(P'))$$, which is just $$\texttt{plus}(M, s(N), s(P))$$.
+
+### Theorem 3 (Commutative Property of Addition): For any $$M$$, $$N$$, and $$P$$, if $$\texttt{plus}(M, N, P)$$, then $$\texttt{plus}(N, M, P)$$.
+
+**Proof of Theorem 3:**
+
+By induction on the derivation of $$\texttt{plus}(M, N, P)$$.
+
+* Case: suppose the last rule is
+  <center>
+  <img src="{{ site.baseurl }}/images/plus-I0.svg">
+  </center>
+
+  We get $$M = 0$$, and $$P = 0$$, and $$N : \texttt{nat}$$.
+
+  By Lemma 1, we get $$\texttt{plus}(N, 0, N)$$, which is just $$\texttt{plus}(N, M, P)$$.
+
+* Case: suppose the last rule is
+  <center>
+  <img src="{{ site.baseurl }}/images/plus-Is-2.svg">
+  </center>
+
+  We get $$M = s(M')$$, and $$P = s(P')$$, and $$\texttt{plus}(M', N, P')$$.
+
+  By induction hypothesis, we get $$\texttt{plus}(N, M', P')$$.
+
+  By Lemma 2, we get $$\texttt{plus}(N, s(M'), s(P'))$$, which is just $$\texttt{plus}(N, M, P)$$.

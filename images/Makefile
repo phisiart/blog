@@ -15,4 +15,4 @@ SVG = $(patsubst %.tex, %.svg, $(SRC))
 all: $(SVG)
 
 clean:
-	$(RM) $(SVG)
+	$(RM) *.svg
