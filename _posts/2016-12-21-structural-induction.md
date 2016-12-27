@@ -5,21 +5,70 @@ comments: true
 categories: 
 ---
 
-## 1. Natural Numbers
+We all (hopefully) have seen mathematical induction in high school (or junior high school).
+By having a base case and an inductive step, we can prove that a theorem which involves a natural number holds
+for any natural number.
 
-We use the following two rules to inductively define natural numbers.
+Here's a typical example.
+
+**Theorem**: Let $$s_n = \sum_{i = 0}^{n} i$$,
+then $$s_n = n(n+1)/2$$.
+
+**Proof**: By induction on $$n$$.
+
+* **Base case**: Suppose $$n = 0$$.
+  Then
+  
+  $$
+  \begin{split}
+  s_n &= s_0 = 0 \\
+      &= \frac{0 (0 + 1)}{2} \\
+      &= \frac{n (n + 1)}{2}
+  \end{split}
+  $$
+
+* **Inductive step**: Suppose the theorem holds for $$n = k \geq 0$$, we need to show that it also holds for $$n = k + 1$$.
+  
+  By induction hypothesis, we are given $$s_k = k (k + 1) / 2$$.
+
+  Therefore,
+  
+  $$
+  \begin{split}
+  s_{k + 1} &= s_k + (k + 1) \\
+            &= \frac{k (k + 1)}{2} + (k + 1) \\
+            &= \frac{(k + 1) (k + 2)}{2} \\
+            &= \frac{(k + 1) ((k + 1) + 1)}{2}
+  \end{split}
+  $$
+
+Q.E.D.
+
+The key of success is that $$s_{n}$$ is inductively / recursively defined.
+The relation $$s_{n+1} = s_n + (n+1)$$ allows us to build up a solution to a bigger problem from a solution to a smaller one.
+
+A lot of things are defined in this way.
+We might want to expand mathematical induction to build up a mechanism of inductive reasoning on other kinds of objects.
+
+## 1. Definition of Natural Numbers
+
+We use the following two inference rules to inductively define natural numbers.
 
 <center>
 <img src="{{ site.baseurl }}/images/nat-def.svg">
 </center>
 
-The first rule says that there is a thing called $$0$$ that is a natural number.
+First, notation. A rule always has a horizontal bar. Anything on top of the bar (there could be 0 or more) is called a **premise**. The thing below the bar (there could only be exactly one) is called the
+**conclusion**. A **rule name** can be given on the right of the bar.
 
-The second rule says that if we somehow "know" that $$N$$ is a natural number,
-then we can safely claim that $$s(N)$$, the "successor" of $$N$$, is also a natural number.
+The meaning of the above two rules is as follows:
+
+* Rule $$\texttt{nat} I_0$$ (natural number introduction rule - 0 case) says that there is a thing called $$0$$ that is a natural number. This does not depend on any premise.
+
+* Rule $$\texttt{nat} I_s$$ (natural number introduction rule - successor case) says that if we somehow "know" that $$N$$ is a natural number, then we can safely claim that $$s(N)$$, the "successor" of $$N$$, is also a natural number.
 
 Given these two rules, we can already prove some interesting results.
-For example, we can prove that $$s(s(s(0)))$$ is a natural number:
+For example, we can prove that $$s(s(s(0)))$$ (what we call "3" in our daily life) is a natural number:
 
 <center>
 <img src="{{ site.baseurl }}/images/sss0-nat.svg">
@@ -95,7 +144,9 @@ If we have got $$\texttt{even}(N')$$, then by using $$\texttt{odd} I_s$$, we get
 
 If we have got $$\texttt{odd}(N')$$, then by using $$\texttt{even} I_s$$, we get $$\texttt{even}(N)$$.
 
-## The Complete Proof
+With that in mind, let's show the complete, formal proof:
+
+## 3. The Complete Proof
 
 By induction on the derivation of $$N : \texttt{nat}$$.
 
@@ -122,7 +173,16 @@ By induction on the derivation of $$N : \texttt{nat}$$.
   * If $$\texttt{odd}(N')$$, by $$\texttt{even} I_s$$, we get $$\texttt{even}(s(N'))$$, which is just $$\texttt{even}(N)$$.
 
 
-## Addition
+## 4. Addition
+
+Note that our "even or odd theorem" still involves a single natural number. The proof doesn't differ
+too much from a mathematical induction proof. Now let's add some new tastes to our natural numbers,
+and try to prove something more complicated.
+
+Let's define addition of two natural numbers as follows.
+We'll use $$\texttt{plus}(M, N, P)$$ to denote $$M + N = P$$.
+
+
 <center>
 <img src="{{ site.baseurl }}/images/plus-def.svg">
 </center>
@@ -206,3 +266,17 @@ By induction on the derivation of $$\texttt{plus}(M, N, P)$$.
   By induction hypothesis, we get $$\texttt{plus}(N, M', P')$$.
 
   By Lemma 2, we get $$\texttt{plus}(N, s(M'), s(P'))$$, which is just $$\texttt{plus}(N, M, P)$$.
+
+## Read More
+* 15-317: Constructive Logic. Lecture Notes on Natural Numbers.
+  
+  [http://symbolaris.com/course/constlog16/06-nat.pdf](http://symbolaris.com/course/constlog16/06-nat.pdf)
+
+* Wikipedia. Structural Induction.
+
+  [https://en.wikipedia.org/wiki/Structural_induction](https://en.wikipedia.org/wiki/Structural_induction)
+
+* Practical Foundations for Programming Languages. Chapter 2: Inductive Definitions.
+
+  [http://www.cs.cmu.edu/~rwh/pfpl.html](http://www.cs.cmu.edu/~rwh/pfpl.html)
+
